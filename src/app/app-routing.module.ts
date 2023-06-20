@@ -16,17 +16,17 @@ const adminModule = () => import('./admin/admin.module').then(x => x.AdminModule
 const profileModule = () => import('./profile/profile.module').then(x => x.ProfileModule);
 
 const routes: Routes = [
-    { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+    { path: '', component: HomeComponent },
     { path: 'account', loadChildren: accountModule },
     { path: 'profile', loadChildren: profileModule, canActivate: [AuthGuard] },
     { path: 'admin', loadChildren: adminModule, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
 
-    { path: 'about', component: AboutComponent},
-    { path: 'concept', component: ConceptComponent},
-    { path: 'tattoo', component: TattooComponent},
-    { path: 'ilustration', component: IlustrationComponent},
-    { path: 'work', component: WorkComponent},
-    { path: 'shop', component: ShopComponent, canActivate: [AuthGuard]},
+    { path: 'about', component: AboutComponent },
+    { path: 'concept', component: ConceptComponent },
+    { path: 'tattoo', component: TattooComponent },
+    { path: 'ilustration', component: IlustrationComponent },
+    { path: 'work', component: WorkComponent },
+    { path: 'shop', component: ShopComponent },
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' }
