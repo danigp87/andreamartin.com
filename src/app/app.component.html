@@ -1,0 +1,37 @@
+﻿<div class="container-fluid pt-5">
+    <div class="row px-3">
+        <div class="col-5 fontsize" routerLink="/">
+            <p class="">ANDREA MARTIN</p>
+        </div>
+        <div class="col-1 bordes" routerLink="/concept" routerLinkActive="active">
+            <a class="noStyle">Concept</a>
+        </div>
+        <div class="col-1 bordes" routerLink="/ilustration" routerLinkActive="active">
+            <a class="noStyle">Ilustración</a>
+        </div>
+        <div class="col-1 bordes" routerLink="/tattoo" routerLinkActive="active">
+            <a class="noStyle">Tattoo</a>
+        </div>
+        <div class="col-1 bordes" routerLink="/work" routerLinkActive="active">
+            <a class="noStyle">Trabajo</a>
+        </div>
+        <div class="col-1 bordes" routerLink="/shop" routerLinkActive="active">
+            <a class="noStyle">Tienda</a>
+        </div>
+        <div class="col-1 bordes" routerLink="/about" routerLinkActive="active">
+            <a class="noStyle">Sobre Mí</a>
+        </div>
+        <div class="col-1 bordesLO">
+            <button (click)="logout()" class="noStyleLO">Logout</button>
+        </div>
+    </div>
+
+    <!-- subnav router outlet -->
+    <router-outlet name="subnav"></router-outlet>
+
+    <!-- global alert -->
+    <alert></alert>
+
+    <!-- main router outlet -->
+    <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,10 @@
+<div class="container p-5 bg-black text-white">
+    <div class="row">
+        <div class="col-3 border text-center pb-3" *ngFor="let product of productsArray">
+            <img class="size p-3" [src]="product.img" alt="">
+            <p>{{product.nombre}}</p>
+            <p>{{product.precio}}€</p>
+            <button (click)="addToCart(product)"><img src="/assets/icons8-cart.gif"></button>
+        </div>
+    </div>
+</div>

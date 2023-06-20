@@ -1,0 +1,101 @@
+<div class="container bg-black text-white p-5 font">
+    <div class="row justify-content-center">
+        <div class="col-6 pt-5 pe-5 border-end">
+            <p>Si quieres ponerte en contacto conmigo para trabajar juntos, puedes escribirme a mi mail o por mis
+                redes sociales!</p><br>
+            <a [cdkCopyToClipboard]="'andriu_100_@hotmail.com'" class="hand ig"><img src="assets/icons8-correo-48.png" alt=""> andriu_100_@hotmail.com </a>
+            <p>Clica para copiar!<br>
+            </p><br>
+            <a href="https://www.instagram.com/andytin__/" target="_blank" class="ig"><img src="assets/icons8-instagram-50.png"> andytin__ </a>
+            <p>Concept Art e Ilustración<br>
+            </p><br>
+            <a href="https://www.instagram.com/andytintattoo/" target="_blank" class="ig"><img src="assets/icons8-instagram-50.png"> andytintattoo</a>
+            <p>Tattoo<br>
+            </p>
+        </div>
+        <div class="col-6 pt-5 ps-5">
+            <form [formGroup]="presuForm">
+                <p>Si no, elige qué necesitas, rellena los campos y me pondré en contacto contigo!</p>
+                <br>
+                <p>Trabajo<br><select formControlName="trabajo" [ngModel]="opcion">
+                        <option *ngFor="let trabajo of trabajos">{{trabajo}}</option>
+                    </select>
+                <p>Nombre<br><input type="text" formControlName="nombre" placeholder=""></p>
+                <p>Mail<br><input type="text" formControlName="mail" placeholder=""></p>
+                <p>Teléfono<br><input type="number" formControlName="tlf" placeholder=""></p>
+                <p>Descripción<br><textarea type="text" formControlName="descripcion" placeholder="" rows="5"
+                        cols="50"></textarea></p>
+                <button class="col-3 boton" type="button" (click)="enviar()">Enviar!</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!-- <div class="container bg-black text-white w33 p-5">
+    <div class="row justify-content-center">
+        <button class="col-12 concept border" (click)="concept()">Concept Art</button>
+
+        <div *ngIf="showConcept">
+            <div class="container p-5 border">
+                <div class="row">
+                    <div class="col-12">
+                        <form [formGroup]="presuForm">
+                            <p>CONCEPT ART</p>
+                            <p>Dime qué necesitas y empezamos a hablar!</p>
+                            <p>Nombre <input type="text" formControlName="nombre" placeholder=""></p>
+                            <p>Mail <input type="text" formControlName="mail" placeholder=""></p>
+                            <p>Teléfono <input type="text" formControlName="tlf" placeholder=""></p>
+                            <p>Descripción <input type="text" formControlName="descripcion" placeholder=""></p>
+                            <button class="col-3" type="button" (click)="enviar()">Enviar!</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="col-12 tattoo border" (click)="tattoo()">Tattoo</button>
+
+        <div *ngIf="showTattoo">
+            <div class="container p-5 border">
+                <div class="row">
+                    <div class="col-12">
+                        <form [formGroup]="presuForm">
+                            <p>TATTOO</p>
+                            <p>Dime qué necesitas y empezamos a hablar!</p>
+                            <p>Nombre <input type="text" formControlName="nombre" placeholder=""></p>
+                            <p>Mail <input type="text" formControlName="mail" placeholder=""></p>
+                            <p>Teléfono <input type="text" formControlName="tlf" placeholder=""></p>
+                            <p>Descripción <input type="text" formControlName="descripcion" placeholder=""></p>
+                            <button class="col-3" type="button" (click)="enviar()">Enviar!</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="col-12 ilustration border" (click)="ilustration()">Ilustración</button>
+
+        <div *ngIf="showIlustration" class="ilustrationBorder">
+            <div class="container p-5 border">
+                <div class="row">
+                    <div class="col-12">
+                        <form [formGroup]="presuForm">
+                            <p>ILUSTRACIÓN</p>
+                            <p>Dime qué necesitas y empezamos a hablar!</p>
+                            <p>Nombre <input type="text" formControlName="nombre" placeholder=""></p>
+                            <p>Mail <input type="text" formControlName="mail" placeholder=""></p>
+                            <p>Teléfono <input type="text" formControlName="tlf" placeholder=""></p>
+                            <p>Descripción <input type="text" formControlName="descripcion" placeholder=""></p>
+                            <button class="col-3" type="button" (click)="enviar()">Enviar!</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div> -->
