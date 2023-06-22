@@ -1,19 +1,23 @@
 <div class="container p-5 bg-black text-white">
     <div class="row">
         <div class="col-12 pb-5">
-            <a href="https://www.instagram.com/andytin__/" target="_blank" class="ig"><img src="assets/icons8-instagram-50.png"></a>
+            <a href="https://www.instagram.com/andytin__/" target="_blank" class="ig"><img
+                    src="assets/icons8-instagram-50.png"></a>
         </div>
     </div>
-    <div class="row">
-        <div class="col-3 d-flex align-items-center" *ngFor="let ilus of ilusArray">
-            <img class="img-fluid p-1 mano" [src]="ilus" (click)="zoom(ilus)">
+    <div class="row image-grid">
+        <div class="col-3 image-container" *ngFor="let ilus of ilusArray">
+            <div class="image-wrapper">
+                <img class="img-fluid p-1 mano" [src]="ilus" (click)="zoom(ilus)">
+            </div>
         </div>
     </div>
 </div>
 
 <div *ngIf="zoomed" class="zoomed-container mano" (click)="closeZoom()">
     <div class="zoomed-image navigation-buttons">
-        <button (click)="previousImage($event)" [disabled]="isFirstImage()"><</button>
+        <button (click)="previousImage($event)" [disabled]="isFirstImage()">
+            <</button>
                 <img [src]="currentImage">
                 <button (click)="nextImage($event)" [disabled]="isLastImage()">></button>
     </div>

@@ -1,23 +1,24 @@
 <div class="container p-5 bg-black text-white">
   <div class="row">
     <div class="col-12 pb-5">
-        <a href="https://www.instagram.com/andytintattoo/" target="_blank" class="ig"><img src="assets/icons8-instagram-50.png"></a>
+      <a href="https://www.instagram.com/andytintattoo/" target="_blank" class="ig"><img
+          src="assets/icons8-instagram-50.png"></a>
     </div>
-</div>
-    <div class="row">
-      <div class="col-3 p-2 d-flex align-items-center" *ngFor="let tattoo of tattooArray">
+  </div>
+  <div class="row image-grid">
+    <div class="col-3 image-container" *ngFor="let tattoo of tattooArray">
+      <div class="image-wrapper">
         <img class="img-fluid p-1 mano" [src]="tattoo" (click)="zoom(tattoo)">
       </div>
     </div>
   </div>
-  
-  
+</div>
 
-  <div *ngIf="zoomed" class="zoomed-container mano" (click)="closeZoom()">
-    <div class="zoomed-image navigation-buttons">
-      <button (click)="previousImage($event)" [disabled]="isFirstImage()"><</button>
-      <img [src]="currentImage">
-      <button (click)="nextImage($event)" [disabled]="isLastImage()">></button>
-    </div>
+<div *ngIf="zoomed" class="zoomed-container mano" (click)="closeZoom()">
+  <div class="zoomed-image navigation-buttons">
+    <button (click)="previousImage($event)" [disabled]="isFirstImage()">
+      <</button>
+        <img [src]="currentImage">
+        <button (click)="nextImage($event)" [disabled]="isLastImage()">></button>
   </div>
-  
+</div>

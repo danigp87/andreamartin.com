@@ -93,12 +93,12 @@ export class ArraysService {
     'assets/Imágenes/Tattoos/44.jpeg']
 
   ilusArray: string[] = [
-    'assets/Imágenes/Ilustración/01.jpeg',
     'assets/Imágenes/Ilustración/001.jpeg',
-    'assets/Imágenes/Ilustración/02.jpg',
-    'assets/Imágenes/Ilustración/03.jpeg',
+    'assets/Imágenes/Ilustración/01.jpeg',
     'assets/Imágenes/Ilustración/04.jpg',
     'assets/Imágenes/Ilustración/05.jpg',
+    'assets/Imágenes/Ilustración/02.jpg',
+    'assets/Imágenes/Ilustración/03.jpeg',
     'assets/Imágenes/Ilustración/06.jpeg',
     'assets/Imágenes/Ilustración/07.jpeg',
     'assets/Imágenes/Ilustración/08.jpeg',

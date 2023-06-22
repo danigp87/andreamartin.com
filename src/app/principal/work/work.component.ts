@@ -1,72 +1,69 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { work } from '@app/interfaces';
-import { EmailService } from './email.service';
-import { Clipboard } from '@angular/cdk/clipboard';
+import emailjs from 'emailjs-com';
+import { EMAILJS_SERVICE_ID } from './emailjs-config';
 
 @Component({
   selector: 'app-work',
   templateUrl: './work.component.html',
   styleUrls: ['./work.component.less']
 })
+
 export class WorkComponent {
 
-  trabajos: string[] = ["Concept Art", "Tattoo", "Ilustración"]
+  constructor(private fb: FormBuilder) { }
+  get f() { return this.presuForm.controls }
+  trabajos: string[] = ["CONCEPT ART", "TATTOO", "ILUSTRACIÓN"]
   opcion: string | undefined;
-
   presu: work[] = []
 
   public presuForm: FormGroup = this.fb.group({
     trabajo: ['', Validators.required],
     nombre: ['', [Validators.required, Validators.minLength(3), Validators.pattern(/^[a-zA-Z\s]*$/)]],
-    mail: ['', [Validators.required, Validators.email]],
-    tlf: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
-    descripcion: ['', [Validators.required, Validators.minLength(3), Validators.pattern(/^[a-zA-Z\s]*$/)]]
+    mail: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]],
+    tlf: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9), Validators.pattern(/^\d{9}$/)]],
+    descripcion: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(1000)]]
   })
 
-  constructor(private fb: FormBuilder, private emailService: EmailService) { }
-  /* get f() { return this.presuForm.controls } */
-
+  public camposInvalidos: { [key: string]: boolean } = {
+    trabajo: false,
+    nombre: false,
+    mail: false,
+    tlf: false,
+    descripcion: false
+  };
 
   enviar() {
-    const trabajo = this.presuForm.controls['trabajo'].value
-    const nombre = this.presuForm.controls['nombre'].value
-    const mail = this.presuForm.controls['mail'].value
-    const tlf = this.presuForm.controls['tlf'].value
-    const descripcion = this.presuForm.controls['descripcion'].value
+    if (this.presuForm.valid) {
+      const nuevoPresu = {
+        Trabajo: this.presuForm.controls['trabajo'].value,
+        Nombre: this.presuForm.controls['nombre'].value,
+        Mail: this.presuForm.controls['mail'].value,
+        Teléfono: this.presuForm.controls['tlf'].value,
+        Descripción: this.presuForm.controls['descripcion'].value
+      };
 
-    this.emailService.sendEmail(trabajo, nombre, mail, tlf, descripcion).subscribe({
-      next: response => {
-        console.log('Correo electrónico enviado correctamente');
-      },
-      error: error => {
-        console.log('Error al enviar el correo electrónico:', error);
-      }
-    });
+      emailjs.send(EMAILJS_SERVICE_ID, 'template_ug0evrq', nuevoPresu)
+        .then((response) => {
+          console.log('Correo electrónico enviado:', response);
+        })
+        .catch((error) => {
+          console.error('Error al enviar el correo electrónico:', error);
+        });
 
-    const nuevoPresu = {trabajo, nombre, mail, tlf, descripcion }
-    this.presu.push(nuevoPresu)
-    console.log(this.presu)
+      this.presuForm.reset();
+      console.log(this.presu)
+    }
+
+    else {
+      this.camposInvalidos = {
+        trabajo: !this.presuForm.get('trabajo')?.valid,
+        nombre: !this.presuForm.get('nombre')?.valid,
+        mail: !this.presuForm.get('mail')?.valid,
+        tlf: !this.presuForm.get('tlf')?.valid,
+        descripcion: !this.presuForm.get('descripcion')?.valid
+      };
+    }
   }
-
-
-  /* showConcept: boolean = false
-  concept() {
-    this.showConcept = !this.showConcept
-    this.showTattoo = false
-    this.showIlustration = false
-  }
-  showTattoo: boolean = false
-  tattoo() {
-    this.showTattoo = !this.showTattoo
-    this.showConcept = false
-    this.showIlustration = false
-  }
-  showIlustration: boolean = false
-  ilustration() {
-    this.showIlustration = !this.showIlustration
-    this.showConcept = false
-    this.showTattoo = false
-  } */
-
 }

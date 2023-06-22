@@ -1,21 +1,23 @@
 <div class="container p-5 bg-black">
     <div class="row">
         <div class="col-12 pb-5">
-            <a href="https://www.instagram.com/andytin__/" target="_blank" class="ig"><img src="assets/icons8-instagram-50.png"></a>
+            <a href="https://www.instagram.com/andytin__/" target="_blank" class="ig"><img
+                    src="assets/icons8-instagram-50.png"></a>
         </div>
     </div>
-    <div class="row">
-        <div class="col-3 d-flex align-items-center" *ngFor="let concept of conceptArray">
-            <img class="img-fluid p-1 mano" [src]="concept" (click)="zoom(concept)">
+    <div class="row image-grid">
+        <div class="col-3 image-container" *ngFor="let concept of conceptArray">
+            <div class="image-wrapper">
+                <img class="img-fluid p-1" [src]="concept" (click)="zoom(concept)">
+            </div>
         </div>
     </div>
-</div>
 
-<div *ngIf="zoomed" class="zoomed-container mano" (click)="closeZoom()">
-    <div class="zoomed-image navigation-buttons">
-        <button (click)="previousImage($event)" [disabled]="isFirstImage()">
-            <</button>
-                <img [src]="currentImage">
-                <button (click)="nextImage($event)" [disabled]="isLastImage()">></button>
+    <div *ngIf="zoomed" class="zoomed-container" (click)="closeZoom()">
+        <div class="zoomed-image navigation-buttons">
+            <button (click)="previousImage($event)" [disabled]="isFirstImage()" class="btn btn-outline-dark"><</button>
+                    <img [src]="currentImage">
+            <button (click)="nextImage($event)" [disabled]="isLastImage()" class="btn btn-outline-dark">></button>
+        </div>
     </div>
 </div>

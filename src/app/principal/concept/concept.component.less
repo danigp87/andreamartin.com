@@ -78,10 +78,6 @@
     max-width: 90vw;
 }
 
-.mano {
-    cursor: pointer;
-}
-
 .ig {
     display: flex;
     justify-content: center;
@@ -92,4 +88,58 @@
     width: 3%;
     height: auto;
     filter: invert(100%);
+}
+
+
+.image-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.image-container {
+    width: calc(33.33% - 10px);
+    /* Ajusta el ancho de cada contenedor para ocupar 1/3 del espacio */
+    margin-bottom: 10px;
+}
+
+.image-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+    /* Establece el ancho del contenedor según el 100% del ancho disponible */
+    overflow: hidden;
+}
+
+.image-wrapper img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Recorta la imagen para ajustarla al contenedor */
+    object-position: center;
+    /* Centra la imagen dentro del contenedor */
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    /* Aplica una máscara de recorte para hacerla cuadrada */
+}
+
+.custom-button {
+    border: 10px solid black;
+    padding: 5px 10px;
+    background-color: #ff0000;
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+}
+
+.custom-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.custom-button:hover {
+    background-color: black;
+    color: white;
 }

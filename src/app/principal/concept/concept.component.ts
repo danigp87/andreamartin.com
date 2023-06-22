@@ -6,6 +6,7 @@ import { ArraysService } from '@app/arrays.service';
   templateUrl: './concept.component.html',
   styleUrls: ['./concept.component.less']
 })
+
 export class ConceptComponent {
 
   constructor(private arraysService: ArraysService) {
